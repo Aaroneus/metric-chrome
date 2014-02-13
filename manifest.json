@@ -1,0 +1,15 @@
+{
+  "name": "Metric Conversions",
+  "version": "0.1",
+  "permissions": [
+     "tabs", "http://*/*", "https://*/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["jquery.js", "content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "manifest_version": 2
+}
