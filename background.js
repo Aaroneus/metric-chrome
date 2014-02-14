@@ -8,3 +8,8 @@
 
 // Weight
 
+// Time
+
+// Temperature
+
+// Speed
