@@ -2,7 +2,7 @@
   "name": "Metric Conversions",
   "version": "0.1",
   "permissions": [
-     "tabs", "http://*/*", "https://*/*"
+     "tabs", "http://*/*", "https://*/*","storage"
   ],
   "options_page": "options.html",
   "browser_action": {
