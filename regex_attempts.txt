@@ -1,0 +1,7 @@
+\b[0-9]+[0-9,-\s]*\s?km[s]?\b
+
+match pattern where > any number of characters except <
+
+>[^<]*[0-9]+[0-9,-\s]*\s?km[s]?<[>]*
+
+Need to edge case the shit out of these
