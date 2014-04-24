@@ -1,23 +1,117 @@
-
-// var lookups = ["KM", "M", "Metre", "Kilometre"];
-var lookups = metric_data;
-
-// $.getJSON("metric_data.json", function(json) {
-//     lookups = json;
-//     alert(json);
-// });
-
-$.getScript("data.js", function(){
-    lookups = metric_data;
-    // alert(json);
-});
+var lookups = [{"id":"3","unit":"Celsius","plural_unit":"Celsius","symbols":"ºC","measures":"temperature","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"4","unit":"Fahrenheit","plural_unit":"Fahrenheit","symbols":"ºF","measures":"temperature","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"5","unit":"Kelvin","plural_unit":"Kelvin","symbols":"K","measures":"temperature","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"6","unit":"Rankine","plural_unit":"Rankine","symbols":"ºR","measures":"temperature","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"7","unit":"Parsec","plural_unit":"Parsecs","symbols":"pc","measures":"length","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"8","unit":"Lightyear","plural_unit":"Lightyears","symbols":"ly","measures":"length","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"9","unit":"Kilometer","plural_unit":"Kilometers","symbols":"km","measures":"length","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"10","unit":"Meter","plural_unit":"Meters","symbols":"m","measures":"length","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"11","unit":"Decimeter","plural_unit":"Decimeters","symbols":"dm","measures":"length","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"12","unit":"Centimeter","plural_unit":"Centimeters","symbols":"cm","measures":"length","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"13","unit":"Millimeter","plural_unit":"Millimeters","symbols":"mm","measures":"length","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"14","unit":"UK Nautical Mile","plural_unit":"UK Nautical Miles","symbols":"\"UK nmi\"","measures":"length","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"15","unit":"Mile","plural_unit":"Miles","symbols":"mi","measures":"length","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"16","unit":"US Nautical Mile","plural_unit":"US Nautical Miles","symbols":"\"US nmi\"","measures":"length","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"17","unit":"International Nautical Mile","plural_unit":"International Nautical Miles","symbols":"nmi","measures":"length","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"18","unit":"Furlong","plural_unit":"Furlongs","symbols":"fur","measures":"length","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"19","unit":"Chain","plural_unit":"Chains","symbols":"ch","measures":"length","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"20","unit":"Yard","plural_unit":"Yards","symbols":"yd","measures":"length","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"21","unit":"Feet","plural_unit":"Feet","symbols":"ft","measures":"length","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"22","unit":"Inche","plural_unit":"Inches","symbols":"in","measures":"length","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"23","unit":"US League","plural_unit":"US Leagues","symbols":"\"US lea\"","measures":"length","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"24","unit":"Nautical League","plural_unit":"Nautical Leagues","symbols":"nl","measures":"length","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"25","unit":"UK League","plural_unit":"UK Leagues","symbols":"\"UK lg\"","measures":"length","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"26","unit":"UK Nautical League","plural_unit":"UK Nautical Leagues","symbols":"\"UK nl\"","measures":"length","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"27","unit":"Microinche","plural_unit":"Microinches","symbols":"µin","measures":"length","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"28","unit":"Micrometer","plural_unit":"Micrometer","symbols":"µm","measures":"length","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"29","unit":"Micron","plural_unit":"Microns","symbols":"µ","measures":"length","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"38","unit":"Square Kilometer","plural_unit":"Square Kilometers","symbols":"km²","measures":"area","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"39","unit":"Hectare","plural_unit":"Hectares","symbols":"ha","measures":"area","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"42","unit":"Square Meter","plural_unit":"Square Meters","symbols":"m²","measures":"area","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"43","unit":"Square Centimeter","plural_unit":"Square Centimeters","symbols":"cm²","measures":"area","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"44","unit":"Square Millimeter","plural_unit":"Square Millimeters","symbols":"mm²","measures":"area","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"45","unit":"Square Micrometer","plural_unit":"Square Micrometers","symbols":"\"sq µm\"","measures":"area","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"46","unit":"Square Micron","plural_unit":"Square Microns","symbols":"µ²","measures":"area","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"47","unit":"Square Mile","plural_unit":"Square Miles","symbols":"mi²","measures":"area","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"48","unit":"Acre","plural_unit":"Acres","symbols":"ac","measures":"area","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"49","unit":"Square Yard","plural_unit":"Square Yards","symbols":"yd²","measures":"area","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"50","unit":"Square Feet","plural_unit":"Square Feet","symbols":"ft²","measures":"area","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"51","unit":"Square Inch","plural_unit":"Square Inches","symbols":"in²","measures":"area","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"52","unit":"Square Microinch","plural_unit":"Square Microinches","symbols":"µin²","measures":"area","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"53","unit":"Cubic Meter","plural_unit":"Cubic Meters","symbols":"m³","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"54","unit":"Liter","plural_unit":"Liters","symbols":"L","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"55","unit":"Centiliter","plural_unit":"Centiliters","symbols":"cl","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"56","unit":"Milliliter","plural_unit":"Milliliters","symbols":"mL","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"57","unit":"Cubic Yard","plural_unit":"Cubic Yards","symbols":"yd³","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"58","unit":"US Barrel (Dry)","plural_unit":"US Barrels (Dry)","symbols":"\"US bbl dry\"","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"59","unit":"US Barrel (Liquid)","plural_unit":"US Barrels (Liquid)","symbols":"\"US bbl lqd\"","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"60","unit":"US Barrel (Oil)","plural_unit":"US Barrels (Oil)","symbols":"\"US bbl oil\"","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"61","unit":"US Barrel (Federal)","plural_unit":"US Barrels (Federal)","symbols":"\"US bbl fed\"","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"62","unit":"UK Barrel","plural_unit":"UK Barrels","symbols":"\"UK bbl\"","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"63","unit":"US Gallon (Liquid)","plural_unit":"US Gallons (Liquid)","symbols":"\"US gal lqd\"","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"64","unit":"US Gallon (Dry)","plural_unit":"US Gallons (Dry)","symbols":"\"US gal dry\"","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"65","unit":"UK Gallon","plural_unit":"UK Gallons","symbols":"\"UK gal\"","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"66","unit":"Cubic Feet","plural_unit":"Cubic Feet","symbols":"ft³","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"70","unit":"US Pint (Liquid)","plural_unit":"US Pints (Liquid)","symbols":"\"US pt lqd\"","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"71","unit":"US Pint (Dry)","plural_unit":"US Pints (Dry)","symbols":"\"US pt dry\"","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"72","unit":"UK Pint","plural_unit":"UK Pints","symbols":"pt","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"73","unit":"US Cup","plural_unit":"US Cups","symbols":"\"cup US\"","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"74","unit":"Canadian Cup","plural_unit":"Canadian Cups","symbols":"\"cup can\"","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"75","unit":"Metric Cup","plural_unit":"Metric Cups","symbols":"\"cup metric\"","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"76","unit":"US Gill","plural_unit":"US Gills","symbols":"\"US gi\"","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"77","unit":"US Tablespoon","plural_unit":"US Tablespoons","symbols":"\"US tblsp\"","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"78","unit":"UK Tablespoon","plural_unit":"UK Tablespoons","symbols":"\"UK tblsp\"","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"79","unit":"Metric Tablespoon","plural_unit":"Metric Tablespoons","symbols":"\"metric tblsp\"","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"80","unit":"US Teaspoon","plural_unit":"US Teaspoons","symbols":"\"US tsp\"","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"81","unit":"UK Teaspoon","plural_unit":"UK Teaspoons","symbols":"\"UK tsp\"","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"82","unit":"Metric Teaspoon","plural_unit":"Metric Teaspoons","symbols":"\"metric tsp\"","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"83","unit":"US Fluid Ounce","plural_unit":"US Fluid Ounces","symbols":"\"us fl oz\"","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"84","unit":"UK Fluid Ounce","plural_unit":"UK Fluid Ounces","symbols":"\"uk fl oz\"","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"85","unit":"Cubic Inche","plural_unit":"Cubic Inches","symbols":"in³","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"86","unit":"Cubic Centimeter","plural_unit":"Cubic Centimeters","symbols":"cm³","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"87","unit":"Cubic Millimeter","plural_unit":"Cubic Millimeters","symbols":"mm³","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"88","unit":"Microliter","plural_unit":"Microliter","symbols":"µl","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"90","unit":"Gills (UK)","plural_unit":"Gills (UK)","symbols":"\"UK gill\"","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"91","unit":"Metric Ton (or Tonne)","plural_unit":"Metric Tons (or Tonnes)","symbols":"t","measures":"weight","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"92","unit":"Kilogram","plural_unit":"Kilograms","symbols":"kg","measures":"weight","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"93","unit":"Gram","plural_unit":"Grams","symbols":"g","measures":"weight","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"94","unit":"Carat","plural_unit":"Carats","symbols":"ct","measures":"weight","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"95","unit":"Milligram","plural_unit":"Milligrams","symbols":"mg","measures":"weight","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"96","unit":"Microgram","plural_unit":"Micrograms","symbols":"µg","measures":"weight","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"97","unit":"Long Ton (UK)","plural_unit":"Long Tons (UK)","symbols":"\"UK t\"","measures":"weight","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"98","unit":"Short Ton (US)","plural_unit":"Short Tons (US)","symbols":"\"US t\"","measures":"weight","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"99","unit":"Short Hundredweight (US)","plural_unit":"Short Hundredweights (US)","symbols":"\"sh cwt\"","measures":"weight","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"100","unit":"Long Hundredweight (UK)","plural_unit":"Long Hundredweights (UK)","symbols":"\"cwt long\"","measures":"weight","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"101","unit":"Stone","plural_unit":"Stones","symbols":"st","measures":"weight","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"102","unit":"Pound","plural_unit":"Pounds","symbols":"lb","measures":"weight","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"103","unit":"Troy Pound","plural_unit":"Troy Pounds","symbols":"\"t lb\"","measures":"weight","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"104","unit":"Troy Ounce","plural_unit":"Troy Ounces","symbols":"\"t oz\"","measures":"weight","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"105","unit":"Ounce","plural_unit":"Ounces","symbols":"oz","measures":"weight","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"106","unit":"Pennyweight","plural_unit":"Pennyweights","symbols":"dwt","measures":"weight","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"107","unit":"Grain","plural_unit":"Grains","symbols":"gr","measures":"weight","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"108","unit":"US Quart (Dry)","plural_unit":"US Quarts (Dry)","symbols":"\"US qt dry\"","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"109","unit":"US Quart (Liquid)","plural_unit":"US Quarts (Liquid)","symbols":"qt","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"110","unit":"UK Quart","plural_unit":"UK Quarts","symbols":"\"UK qt\"","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"111","unit":"Kiloliter","plural_unit":"Kiloliters","symbols":"kl","measures":"volume","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"112","unit":"Tonne","plural_unit":"Tonnes","symbols":"T","measures":"weight","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"113","unit":"League","plural_unit":"Leagues","symbols":"Lea","measures":"length","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"114","unit":"Nautical Mile","plural_unit":"Nautical Miles","symbols":"\"N mi\"","measures":"length","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"115","unit":"Second","plural_unit":"Seconds","symbols":"s","measures":"time","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"118","unit":"Minute","plural_unit":"Minutes","symbols":"min","measures":"time","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"119","unit":"Hour","plural_unit":"Hour","symbols":"hr","measures":"time","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"120","unit":"Day","plural_unit":"Day","symbols":"day","measures":"time","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"122","unit":"Newton","plural_unit":"Newton","symbols":"ºN","measures":"temperature","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"123","unit":"Réaumur","plural_unit":"Réaumur","symbols":"ºRé","measures":"temperature","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"124","unit":"Rømer","plural_unit":"Rømer","symbols":"°Rø","measures":"temperature","converter":null,"converts_to":null,"class":null,"metric":null},
+{"id":"125","unit":"Delisle","plural_unit":"Delisle","symbols":"°De","measures":"temperature","converter":null,"converts_to":null,"class":null,"metric":null}
+];
 
 alert("Lookups: "+lookups.length);
 
 var body = $("body").html();
 
 for (var i=0; i < lookups.length; i++) {
-  var unit = lookups[i].name;
+  var unit = lookups[i].unit;
   var searchTerm = new RegExp("\\b[0-9]+[0-9,-\\s]*\\s?"+unit+"[s]?\\b", "gi");
 
   var replaced = body.replace(searchTerm,
