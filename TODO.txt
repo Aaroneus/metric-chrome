@@ -1,5 +1,8 @@
 TODO:
 
+Options Page
+	* Continue css render of options page. 2 column layout using buttons from metric site.
+	* Reposition status and style appropriately
 Create options page to determine and save conversion preferences.
 	*Check additional values for options exist in db
 Fix stripping out of decimal points from values

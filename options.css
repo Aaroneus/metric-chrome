@@ -1,77 +1,106 @@
-/**
- * Copyright 2010 Google Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * @author Slave Jovanovski (slave@google.com)
- *
- */
 
 body {
-  background-color: #CCE0F5;
+  background-image: url(/img/bgimg.jpg);
+  background-repeat:repeat-x;
+  margin-top: 0;
 }
 
-div.main {
-  padding: 20px;
-  margin: 30px auto;
-  width: 400px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  border-color: #5F78AB;
-  border-style: solid;
-  border-width: 5px;
+header {
+    display:block;
+    position:relative;
+    margin:0 0 0 0;
+    padding:0 4px 0 4px;
+    width:960px;
+    height:220px;
+    background-repeat:no-repeat;
+    background-image:url(/img/metricHeader.jpg);
 }
 
-div.optionDiv, div.eventTypeDiv, div.feedTypeDiv {
-  margin: 10px 0px;
+#col1{
+  display:block;
+  width:650px;
+  float:left;
 }
 
-label.optionLabel {
-  margin-right: 10px;
-  width: 250px;
-  display: block;
+#col2{
+  display:block;
+  margin-top: 310px;
+  float:left;
+}
+
+#page_header{
+  padding-top: 160px;
+  padding-left: 30px;
+  color:#fff;
+  font-size: 30px;
+  font-family: helvetica;
+  font-weight: bolder;
+}
+
+#options_message{
+  font-size: 20px;
+  font-family: helvetica;
+  font-weight: normal; 
+}
+
+.option{
+ height:65px;
+ background-image: url(/img/buttonbg.png);
+ display: block;
+ padding-left: 30px;
+ 
+}
+
+.option img{
   float: left;
 }
+.option select{
+  margin-top: 20px;
+  margin-right: 0px;
+  padding-left: 8px;
+  float: left;
 
-#message {
-  text-align: center;
-  margin: 10px;
+  background: transparent;
+  width: 268px;
+  padding: 5px;
+  font-size: 18px;
+  line-height: 1;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  height: 34px;
+  -webkit-appearance: none;
+  overflow: hidden;
+  background: url(/img/arrow.png) no-repeat right #ddd;
+
+}
+.option .type{
+  color:#fff;
+  float:left;
+  width:150px;
+  padding-top: 22px;
+  padding-left: 5px;
+  font-size: 21px;
+  font-family: helvetica;
+}
+
+#save{
+ height:65px;
+ background-image: url(/img/buttonbg.png);
+ display: block;
+ padding-left: 100px; 
+ box-shadow: 
+  0 1px 2px #fff, 
+  0 -1px 1px #666, 
+  inset 0 -1px 1px rgba(0,0,0,0.5), 
+  inset 0 1px 1px rgba(255,255,255,0.8); 
+
+}
+
+button{
+  float:left;
+  font-size: 25px;
   font-weight: bold;
-  padding: 5px 5px;
+  background: transparent;
+  /*border:0px;*/
+  color:#fff;
 }
-
-.successMessage {
-  background-color: #DAF0BE;
-}
-
-.errorMessage {
-  background-color: #FFE5E5;
-}
-
-#event_types, #feed_types {
-  margin: 20px 0px;
-}
-
-#event_types div, #feed_types div {
-  margin-left: 20px;'
-}
-
-#logo_container {
-  text-align: center;
-}
-
-#logo {
-  width: 200px;
-  height: 150px;

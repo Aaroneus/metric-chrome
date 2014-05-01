@@ -1,14 +1,34 @@
 
 function save_options() {
   var select = document.getElementById("length");
-  var length = select.children[select.selectedIndex].value;
-  // debugger
-  var preferences = {};
-  preferences['length'] = length;
+  var length = getElementValue(select);
 
-  var accName = 'length';
+  select = document.getElementById("area");
+  var area = getElementValue(select);
+  select = document.getElementById("volume");
+  var volume = getElementValue(select);
+  select = document.getElementById("weight");
+  var weight = getElementValue(select);
+  select = document.getElementById("time");
+  var time = getElementValue(select);
+  select = document.getElementById("temperature");
+  var temperature = getElementValue(select);
+  select = document.getElementById("speed");
+  var speed = getElementValue(select);
+
+  var preferences = [
+    {'measures': 'length', 'preference': length},
+    {'measures': 'area', 'preference': area},
+    {'measures': 'volume', 'preference': volume},
+    {'measures': 'weight', 'preference': weight},
+    {'measures': 'time', 'preference': time},
+    {'measures': 'temperature', 'preference': temperature},
+    {'measures': 'speed', 'preference': speed}
+  ];
+
+  var accName = 'metric_preferences';
   var obj = {};
-  obj[accName] = length;
+  obj[accName] = preferences;
 
 
   chrome.storage.sync.set(obj, function(){
@@ -20,30 +40,29 @@ function save_options() {
   });
 }
 
+function getElementValue(element){
+  return element.children[element.selectedIndex].value;
+}
+
 // Restores select box state to saved value from localStorage.
 function restore_options() {
-  debugger
-  var accName = 'length';
+
+  var accName = 'metric_preferences';
   var selected_value;
 
   chrome.storage.sync.get(accName, function(data){
     var val = data[accName];
-    alert("Retrieved: "+val);
-    selected_value = val;
-
-    if (!selected_value) {
-      alert("selected_value is false");
-      return;
-    }
-    var select = document.getElementById("length");
-    for (var i = 0; i < select.children.length; i++) {
-      var child = select.children[i];
-      if (child.value == selected_value) {
-        child.selected = "true";
-        break;
+    for(var i=0; i<val.length; i++ ){
+      var preference = val[i];
+      var select = document.getElementById(preference.measures);
+      for (var j = 0; j < select.children.length; j++) {
+        var child = select.children[j];
+        if (child.value == preference.preference) {
+          child.selected = "true";
+          break;
+        }
       }
     }
-    alert("Length value was "+ selected_value);
   });
 }
 
