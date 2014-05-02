@@ -31,12 +31,19 @@ function save_options() {
   obj[accName] = preferences;
 
 
+
   chrome.storage.sync.set(obj, function(){
-    var status = document.getElementById("status");
-    status.innerHTML = "Options Saved.";
+    
+    var overlay = document.createElement("div");
+    overlay.setAttribute("id","overlay");
+    overlay.setAttribute("class", "overlay");
+    overlay.innerHTML = "<p>Preferences Saved Successfully</p>";
+    document.body.appendChild(overlay);
+    
     setTimeout(function() {
-      status.innerHTML = "";
-    }, 750);
+      overlay.innerHTML = "";
+      document.body.removeChild(document.getElementById("overlay"));
+    }, 1000);
   });
 }
 

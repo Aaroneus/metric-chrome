@@ -20,12 +20,19 @@ header {
   display:block;
   width:650px;
   float:left;
+  border: 1px solid #ccc;
+  margin-top: 16px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 #col2{
+  margin-top: 0px;
+  margin-left: 30px;  
   display:block;
-  margin-top: 310px;
   float:left;
+  width:350px;
+  border: 1px solid #ccc;
 }
 
 #page_header{
@@ -38,9 +45,25 @@ header {
 }
 
 #options_message{
+  padding-left: 5px;
+  padding-top: 5px;  
   font-size: 20px;
   font-family: helvetica;
   font-weight: normal; 
+}
+
+
+.region_message{
+  font-size: 20px;
+  font-family: helvetica;
+  font-weight: normal; 
+  padding-left: 5px;
+  padding-top: 5px;  
+}
+
+.region{
+  margin-left: 15px;
+  margin-right:15px;
 }
 
 .option{
@@ -48,7 +71,6 @@ header {
  background-image: url(/img/buttonbg.png);
  display: block;
  padding-left: 30px;
- 
 }
 
 .option img{
@@ -83,10 +105,12 @@ header {
   font-family: helvetica;
 }
 
-#save{
+/*#save{
  height:65px;
+ width:150px;
  background-image: url(/img/buttonbg.png);
  display: block;
+ margin-left: 200px;
  padding-left: 100px; 
  box-shadow: 
   0 1px 2px #fff, 
@@ -94,13 +118,40 @@ header {
   inset 0 -1px 1px rgba(0,0,0,0.5), 
   inset 0 1px 1px rgba(255,255,255,0.8); 
 
-}
+}*/
 
 button{
+  overflow: hidden;
+  margin-left: 250px;
+  padding-top: 1px;
+  padding-left: 5px;
   float:left;
   font-size: 25px;
   font-weight: bold;
   background: transparent;
-  /*border:0px;*/
+  height:50px;
+  width:150px;
   color:#fff;
+  background-image: url(/img/buttonbg.png);
+}
+
+.overlay
+{
+   background-color: #3A5B68;
+   opacity: .9;
+   filter: alpha(opacity=90);
+   position: fixed; top: 200; left: 250;
+   width: 400px; 
+   height: 200px;
+   z-index: 10;
+}
+
+.overlay p{
+  float:left;
+  color: #CACACA;
+  margin-top: 50px;
+  margin-left: 50px;
+  font-weight: bold;
+  font-size: 30px;
+  font-family: helvetica;
 }
