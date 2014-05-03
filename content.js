@@ -107,18 +107,91 @@ var lookups = [
 {"id":"125","unit":"Delisle","plural_unit":"Delisle","symbols":"°De","measures":"temperature","region":"INTERNATIONAL","converter":{"convert_to":"Delisle","conversion_factor":"1.5000000","conversion_factor_exponent":"0","conversion_factor_offset":"-100.00"},"converts_to":null,"class":null,"metric":null}
 ];
 
-// alert("Lookups: "+lookups.length);
+var prefs = loadPreferences();
 
 var body = $("body").html();
 
-var findMatch = function(match, group1, group2, index, original) {
-  var valueToBeConverted = "Equivalent to: "+ match.replace(/\D/g,'') + "\n "+ unit;
+var unitMeasures = function(unitName){
+	var lookup = getUnitLookup(unitName);
+	if(lookup){
+		return lookup.measures;
+	}
+	return null;
+};
 
+var getUnitLookup = function(unitName){
+	for(var i=0; i<lookups.length(); i++){
+		var lookup = lookup[i];
+		if(lookup.unit.equals(unitName)){
+			return lookup;
+		}
+	}
+	return null;	
+};
+
+var loadPreferences = function(){
+  var accName = 'metric_preferences';
+  var selected_value;
+
+  chrome.storage.sync.get(accName, function(data){
+    var val = data[accName];
+    if(!val){
+    	return loadDefaults();
+    } else {
+    	return val;
+    }
+  });
+}
+
+var getPreferenceFor = function(type){
+	for(var i=0; i<prefs.length();i++){
+		if(prefs[i].measures.equals(type)){
+			return prefs[i].preference;
+		}
+	}
+	return null;
+}
+
+var loadDefaults = function(){
+	return [
+	   {'measures': 'length', 'preference': 'meter'},
+	   {'measures': 'area', 'preference': 'square meter'},
+	   {'measures': 'volume', 'preference': 'liter'},
+	   {'measures': 'weight', 'preference': 'kilogram'},
+	   {'measures': 'time', 'preference': 'second'},
+	   {'measures': 'temperature', 'preference': 'celsius'},
+	   {'measures': 'speed', 'preference': 'meters per second'}
+	 ];
+}
+
+var findMatch = function(match, group1, group2, index, original) {
+  // var valueToBeConverted = "Equivalent to: "+ match.replace(/\D/g,'') + "\n "+ unit;
+
+  var valueToBeConverted = match.replace(/[^0-9\.]+/g,'');
+  var conversion = convert(valueToBeConverted, unit, toBeConvertedTo);
+
+  var valueToBeConverted = "Equivalent to: "+ conversion + toBeConvertedTo.unit +" \n";
   return "<span title='"+valueToBeConverted+"' style='text-transform:uppercase;'>"+match+"</span>";
 };
 
+var convert = function(valueToBeConverted, unit, toBeConvertedTo){
+
+	//normalise to SI unit
+	//Take normalised value and convert to new lookup value
+	// Formula:
+	//Subtract offset
+	//multiply by factor
+	//multiply by exponent
+
+
+	// var value = valueToBeConverted - unit.
+};
+
+//Main Logic starts hereee
 for (var i=0; i < lookups.length; i++) {
   var unit = lookups[i].unit;
+  var toBeConvertedTo = getUnitLookup(getPreferenceFor(unit.measures));
+
   // var searchTerm = new RegExp("\\b[0-9]+[0-9,-\\s]*\\s?"+unit+"[s]?\\b", "gi");
   var searchTerm = new RegExp("\\b[1-9](?:\\d{0,2})(?:,\\d{3})*(?:\\.\\d*[1-9])?\\s?"+unit+"\\b|0?\\.\\d*[1-9]\\s?"+unit+"\\b|0\\s?"+unit+"\\b", "gi");
   // \b[1-9](?:\d{0,2})(?:,\d{3})*(?:\.\d*[1-9])?\s?km|0?\.\d*[1-9]\s?km|0\s?km\b
