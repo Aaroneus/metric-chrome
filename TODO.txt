@@ -1,6 +1,6 @@
 TODO:
 
-Fix stripping out of decimal points from values
+Fix conversion algorithm to work functionally! Chrome sync is running in parallel to remainder of the application
 Alter algorithm to convert units with same symbol
 Tidy up content.js to use method for searching and inserting conversion
 Look at more efficient search algorithm to do replace
