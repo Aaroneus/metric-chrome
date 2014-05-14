@@ -964,7 +964,7 @@ var lookups = [{"id":"3","unit":"Celsius","plural_unit":"Celsius","symbols":"ºC
   {"lookup_id":"109","convert_to":"Quarts (Liquid)","conversion_factor":"1.0566882","conversion_factor_exponent":"0","conversion_factor_offset":"0.00","conversion_factor_premult":null},
   {"lookup_id":"110","convert_to":"Quarts","conversion_factor":"8.7987699","conversion_factor_exponent":"-1","conversion_factor_offset":"0.00","conversion_factor_premult":null},
   {"lookup_id":"111","convert_to":"Kiloliters","conversion_factor":"1.0000000","conversion_factor_exponent":"-3","conversion_factor_offset":"0.00","conversion_factor_premult":null}],"class":null,"metric":null},
-{"id":"58","unit":"Barrels (Dry)","plural_unit":"Barrels (Dry)","symbols":"\"US bbl dry\"","known_by":["Barrels (Dry)","\"US bbl dry\""],"region":"US","measures":"volume","convert_to_base_factor":  {"lookup_id":"58","convert_to":"Barrels (Dry)","conversion_factor":"8.6484916","conversion_factor_exponent":"-3","conversion_factor_offset":"0.00","conversion_factor_premult":null},"converts_to":[  {"lookup_id":"53","convert_to":"Cubic Meters","conversion_factor":"1.0000000","conversion_factor_exponent":"-3","conversion_factor_offset":"0.00","conversion_factor_premult":null},
+{"id":"58","unit":"Barrel (Dry)","plural_unit":"Barrels (Dry)","symbols":"\"US bbl dry\"","known_by":["Barrels (Dry)","\"US bbl dry\""],"region":"US","measures":"volume","convert_to_base_factor":  {"lookup_id":"58","convert_to":"Barrels (Dry)","conversion_factor":"8.6484916","conversion_factor_exponent":"-3","conversion_factor_offset":"0.00","conversion_factor_premult":null},"converts_to":[  {"lookup_id":"53","convert_to":"Cubic Meters","conversion_factor":"1.0000000","conversion_factor_exponent":"-3","conversion_factor_offset":"0.00","conversion_factor_premult":null},
   {"lookup_id":"54","convert_to":"Liters","conversion_factor":"1.0000000","conversion_factor_exponent":"0","conversion_factor_offset":"0.00","conversion_factor_premult":null},
   {"lookup_id":"55","convert_to":"Centiliters","conversion_factor":"1.0000000","conversion_factor_exponent":"2","conversion_factor_offset":"0.00","conversion_factor_premult":null},
   {"lookup_id":"56","convert_to":"Milliliters","conversion_factor":"1.0000000","conversion_factor_exponent":"3","conversion_factor_offset":"0.00","conversion_factor_premult":null},
@@ -1002,7 +1002,7 @@ var lookups = [{"id":"3","unit":"Celsius","plural_unit":"Celsius","symbols":"ºC
   {"lookup_id":"109","convert_to":"Quarts (Liquid)","conversion_factor":"1.0566882","conversion_factor_exponent":"0","conversion_factor_offset":"0.00","conversion_factor_premult":null},
   {"lookup_id":"110","convert_to":"Quarts","conversion_factor":"8.7987699","conversion_factor_exponent":"-1","conversion_factor_offset":"0.00","conversion_factor_premult":null},
   {"lookup_id":"111","convert_to":"Kiloliters","conversion_factor":"1.0000000","conversion_factor_exponent":"-3","conversion_factor_offset":"0.00","conversion_factor_premult":null}],"class":null,"metric":null},
-{"id":"59","unit":"Barrels (Liquid)","plural_unit":"Barrels (Liquid)","symbols":"\"US bbl lqd\"","known_by":["Barrels (Liquid)","\"US bbl lqd\""],"region":"US","measures":"volume","convert_to_base_factor":  {"lookup_id":"59","convert_to":"Barrels (Liquid)","conversion_factor":"8.3864144","conversion_factor_exponent":"-3","conversion_factor_offset":"0.00","conversion_factor_premult":null},"converts_to":[  {"lookup_id":"53","convert_to":"Cubic Meters","conversion_factor":"1.0000000","conversion_factor_exponent":"-3","conversion_factor_offset":"0.00","conversion_factor_premult":null},
+{"id":"59","unit":"Barrel (Liquid)","plural_unit":"Barrels (Liquid)","symbols":"\"US bbl lqd\"","known_by":["Barrels (Liquid)","\"US bbl lqd\""],"region":"US","measures":"volume","convert_to_base_factor":  {"lookup_id":"59","convert_to":"Barrels (Liquid)","conversion_factor":"8.3864144","conversion_factor_exponent":"-3","conversion_factor_offset":"0.00","conversion_factor_premult":null},"converts_to":[  {"lookup_id":"53","convert_to":"Cubic Meters","conversion_factor":"1.0000000","conversion_factor_exponent":"-3","conversion_factor_offset":"0.00","conversion_factor_premult":null},
   {"lookup_id":"54","convert_to":"Liters","conversion_factor":"1.0000000","conversion_factor_exponent":"0","conversion_factor_offset":"0.00","conversion_factor_premult":null},
   {"lookup_id":"55","convert_to":"Centiliters","conversion_factor":"1.0000000","conversion_factor_exponent":"2","conversion_factor_offset":"0.00","conversion_factor_premult":null},
   {"lookup_id":"56","convert_to":"Milliliters","conversion_factor":"1.0000000","conversion_factor_exponent":"3","conversion_factor_offset":"0.00","conversion_factor_premult":null},
@@ -1040,7 +1040,7 @@ var lookups = [{"id":"3","unit":"Celsius","plural_unit":"Celsius","symbols":"ºC
   {"lookup_id":"109","convert_to":"Quarts (Liquid)","conversion_factor":"1.0566882","conversion_factor_exponent":"0","conversion_factor_offset":"0.00","conversion_factor_premult":null},
   {"lookup_id":"110","convert_to":"Quarts","conversion_factor":"8.7987699","conversion_factor_exponent":"-1","conversion_factor_offset":"0.00","conversion_factor_premult":null},
   {"lookup_id":"111","convert_to":"Kiloliters","conversion_factor":"1.0000000","conversion_factor_exponent":"-3","conversion_factor_offset":"0.00","conversion_factor_premult":null}],"class":null,"metric":null},
-{"id":"60","unit":"Barrels (Oil)","plural_unit":"Barrels (Oil)","symbols":"\"US bbl oil\"","known_by":["Barrels (Oil)","\"US bbl oil\""],"region":"US","measures":"volume","convert_to_base_factor":  {"lookup_id":"60","convert_to":"Barrels (Oil)","conversion_factor":"6.2898108","conversion_factor_exponent":"-3","conversion_factor_offset":"0.00","conversion_factor_premult":null},"converts_to":[  {"lookup_id":"53","convert_to":"Cubic Meters","conversion_factor":"1.0000000","conversion_factor_exponent":"-3","conversion_factor_offset":"0.00","conversion_factor_premult":null},
+{"id":"60","unit":"Barrel (Oil)","plural_unit":"Barrels (Oil)","symbols":"\"US bbl oil\"","known_by":["Barrels (Oil)","\"US bbl oil\""],"region":"US","measures":"volume","convert_to_base_factor":  {"lookup_id":"60","convert_to":"Barrels (Oil)","conversion_factor":"6.2898108","conversion_factor_exponent":"-3","conversion_factor_offset":"0.00","conversion_factor_premult":null},"converts_to":[  {"lookup_id":"53","convert_to":"Cubic Meters","conversion_factor":"1.0000000","conversion_factor_exponent":"-3","conversion_factor_offset":"0.00","conversion_factor_premult":null},
   {"lookup_id":"54","convert_to":"Liters","conversion_factor":"1.0000000","conversion_factor_exponent":"0","conversion_factor_offset":"0.00","conversion_factor_premult":null},
   {"lookup_id":"55","convert_to":"Centiliters","conversion_factor":"1.0000000","conversion_factor_exponent":"2","conversion_factor_offset":"0.00","conversion_factor_premult":null},
   {"lookup_id":"56","convert_to":"Milliliters","conversion_factor":"1.0000000","conversion_factor_exponent":"3","conversion_factor_offset":"0.00","conversion_factor_premult":null},
@@ -1078,7 +1078,7 @@ var lookups = [{"id":"3","unit":"Celsius","plural_unit":"Celsius","symbols":"ºC
   {"lookup_id":"109","convert_to":"Quarts (Liquid)","conversion_factor":"1.0566882","conversion_factor_exponent":"0","conversion_factor_offset":"0.00","conversion_factor_premult":null},
   {"lookup_id":"110","convert_to":"Quarts","conversion_factor":"8.7987699","conversion_factor_exponent":"-1","conversion_factor_offset":"0.00","conversion_factor_premult":null},
   {"lookup_id":"111","convert_to":"Kiloliters","conversion_factor":"1.0000000","conversion_factor_exponent":"-3","conversion_factor_offset":"0.00","conversion_factor_premult":null}],"class":null,"metric":null},
-{"id":"61","unit":"Barrels (Federal)","plural_unit":"Barrels (Federal)","symbols":"\"US bbl fed\"","known_by":["Barrels (Federal)","\"US bbl fed\""],"region":"US","measures":"volume","convert_to_base_factor":  {"lookup_id":"61","convert_to":"Barrels (Federal)","conversion_factor":"8.5216791","conversion_factor_exponent":"-3","conversion_factor_offset":"0.00","conversion_factor_premult":null},"converts_to":[  {"lookup_id":"53","convert_to":"Cubic Meters","conversion_factor":"1.0000000","conversion_factor_exponent":"-3","conversion_factor_offset":"0.00","conversion_factor_premult":null},
+{"id":"61","unit":"Barrel (Federal)","plural_unit":"Barrels (Federal)","symbols":"\"US bbl fed\"","known_by":["Barrels (Federal)","\"US bbl fed\""],"region":"US","measures":"volume","convert_to_base_factor":  {"lookup_id":"61","convert_to":"Barrels (Federal)","conversion_factor":"8.5216791","conversion_factor_exponent":"-3","conversion_factor_offset":"0.00","conversion_factor_premult":null},"converts_to":[  {"lookup_id":"53","convert_to":"Cubic Meters","conversion_factor":"1.0000000","conversion_factor_exponent":"-3","conversion_factor_offset":"0.00","conversion_factor_premult":null},
   {"lookup_id":"54","convert_to":"Liters","conversion_factor":"1.0000000","conversion_factor_exponent":"0","conversion_factor_offset":"0.00","conversion_factor_premult":null},
   {"lookup_id":"55","convert_to":"Centiliters","conversion_factor":"1.0000000","conversion_factor_exponent":"2","conversion_factor_offset":"0.00","conversion_factor_premult":null},
   {"lookup_id":"56","convert_to":"Milliliters","conversion_factor":"1.0000000","conversion_factor_exponent":"3","conversion_factor_offset":"0.00","conversion_factor_premult":null},
@@ -2651,13 +2651,11 @@ var loadPreferences = function(){
 
   chrome.storage.sync.get(accName, function(data){
     var val = data[accName];
-	// alert("Value: "+val)    
     if(!val){
       prefs = loadDefaults();      
     } else {
       prefs = val;    	
     }
-    // alert("Value: "+val)    
     identifyAndUpdatePageUnits();
   });
 }
@@ -2667,7 +2665,8 @@ var unitMeasures = function(unitName){
 	if(lookup){
 		return lookup.measures;
 	}
-	return null;
+	alert("No associated measure found for "+unitName);
+  return null;
 };
 
 var getUnitLookup = function(unitName){
@@ -2677,6 +2676,7 @@ var getUnitLookup = function(unitName){
 			return lookup;
 		}
 	}
+  alert("No unit found for "+unitName);
 	return null;	
 };
 
@@ -2686,6 +2686,7 @@ var getPreferenceFor = function(type){
 			return prefs[k].preference;
 		}
 	}
+  alert(type+" has no Preference set");
 	return null;
 };
 
@@ -2704,6 +2705,7 @@ var loadDefaults = function(){
 var convert = function(valueToBeConverted, unit, toBeConvertedTo){
 
 	//normalise to SI unit
+  
 	//Take normalised value and convert to new lookup value
 	// Formula:
 	//Subtract offset
@@ -2715,13 +2717,19 @@ var convert = function(valueToBeConverted, unit, toBeConvertedTo){
 };
 
 var identifyAndUpdatePageUnits = function(){
-  //Main Logic starts here
-  var count = 0;
+
+  var tagPrefix = "<span title='";
+  var tagStyle = "' style='text-transform:uppercase;'>";
+  var tagSuffix = "</span>";
+  var textPrefix = "Equivalent to: ";
+  var textSuffix = " \n";
+  var spacer = " ";
+
+
   for (var i=0; i < lookups.length; i++) {
     var unit = lookups[i];
-    // alert(JSON.stringify(unit));    
+    
     var toBeConvertedTo = getUnitLookup(getPreferenceFor(unit.measures));
-
     var unitKnownBy = "("+unit.known_by.join('|')+")";
    
     var searchTerm = new RegExp("\\b[1-9](?:\\d{0,2})(?:,\\d{3})*(?:\\.\\d*[1-9])?\\s?"+unitKnownBy+"\\b|0?\\.\\d*[1-9]\\s?"+unitKnownBy+"\\b|0\\s?"+unitKnownBy+"\\b", "gi");
@@ -2732,12 +2740,7 @@ var identifyAndUpdatePageUnits = function(){
         var valueToBeConverted = match.replace(/[^0-9\.]+/g,'');
         var conversion = convert(valueToBeConverted, unit, toBeConvertedTo);
 
-        var tagPrefix = "<span title='";
-        var tagStyle = "' style='text-transform:uppercase;'>";
-        var tagSuffix = "</span>";
-        var textPrefix = "Equivalent to: ";
-        var textSuffix = " \n";
-
+        
         var matched = body.substring((offset - textPrefix.length), (offset + match.length + textSuffix.length));
 
         if(matched.substring(0, textPrefix.length) == textPrefix){
@@ -2746,12 +2749,14 @@ var identifyAndUpdatePageUnits = function(){
         }
         
 
-        var output = textPrefix + conversion + toBeConvertedTo.unit + textSuffix;
+        var output = textPrefix + conversion + spacer + toBeConvertedTo.plural_unit + textSuffix;
         return tagPrefix+output+tagStyle+match+tagSuffix;
       }
     );
-    body = replaced; 
+    body = replaced;     
   }
+  // alert(matchedOnPage);
+
   $("body").html(body);
 
 };
