@@ -2726,12 +2726,28 @@ var identifyAndUpdatePageUnits = function(){
    
     var searchTerm = new RegExp("\\b[1-9](?:\\d{0,2})(?:,\\d{3})*(?:\\.\\d*[1-9])?\\s?"+unitKnownBy+"\\b|0?\\.\\d*[1-9]\\s?"+unitKnownBy+"\\b|0\\s?"+unitKnownBy+"\\b", "gi");
     // Replace values with name
+    //  group4, group5, group6, group7, group8, group9,
     var replaced = body.replace(searchTerm, 
-      function(match, group1, group2, index, original) {
+      function(match, group1, group2, group3, offset, original) {
         var valueToBeConverted = match.replace(/[^0-9\.]+/g,'');
         var conversion = convert(valueToBeConverted, unit, toBeConvertedTo);
-        var output = "Equivalent to: "+ conversion + toBeConvertedTo.unit +" \n";
-        return "<span title='"+output+"' style='text-transform:uppercase;'>"+match+"</span>";
+
+        var tagPrefix = "<span title='";
+        var tagStyle = "' style='text-transform:uppercase;'>";
+        var tagSuffix = "</span>";
+        var textPrefix = "Equivalent to: ";
+        var textSuffix = " \n";
+
+        var matched = body.substring((offset - textPrefix.length), (offset + match.length + textSuffix.length));
+
+        if(matched.substring(0, textPrefix.length) == textPrefix){
+          // body.indexOf(textSuffix, offset);
+          return match;
+        }
+        
+
+        var output = textPrefix + conversion + toBeConvertedTo.unit + textSuffix;
+        return tagPrefix+output+tagStyle+match+tagSuffix;
       }
     );
     body = replaced; 
