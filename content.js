@@ -2761,7 +2761,8 @@ var loadPreferences = function(){
     } else {
       prefs = val;    	
     }
-    identifyAndUpdatePageUnits();
+    // identifyAndUpdatePageUnits();
+    applyConversions();
   });
 }
 
@@ -2828,14 +2829,63 @@ var convert = function(valueToBeConverted, unit, toBeConvertedTo){
   var fromConversionFactor = parseFloat(fromBase.conversion_factor);
   var fromConversionFactorExponent = parseFloat(fromBase.conversion_factor_exponent);
 
-  var baseValue = ( toPremult * (valueToBeConverted - toConversionFactorOffset)) * Math.pow(toConversionFactor, toConversionFactorExponent);
-  var convertedValue = ((baseValue + fromConversionFactorOffset) / fromPremult) / Math.pow(fromConversionFactor, (fromConversionFactorExponent * -1));
-	debugger //TODO: Work out convert forward and Backwards formula
+  // var baseValue = ( toPremult * (valueToBeConverted - toConversionFactorOffset)) * (toConversionFactor * Math.pow(10,toConversionFactorExponent));
+  // var convertedValue = ((baseValue + fromConversionFactorOffset) / fromPremult) / power(fromConversionFactor, (fromConversionFactorExponent * -1));
+
+  var baseValue = (toPremult * (valueToBeConverted - toConversionFactorOffset)) * (toConversionFactor * Math.pow(10,(toConversionFactorExponent * -1)));
+  //baseValue is number of units as a base unit
+  // var convertedValue = (baseValue/ (fromConversionFactor * Math.pow(10,(fromConversionFactorExponent)) + fromConversionFactorOffset) / fromPremult);
+  var convertedValue = baseValue * (fromConversionFactor * Math.pow(10,(fromConversionFactorExponent)));
+
 	return convertedValue;
 };
 
-var identifyAndUpdatePageUnits = function(){
 
+// var identifyAndUpdatePageUnits = function(){
+
+//   var tagPrefix = "<span title='";
+//   var tagStyle = "' style='text-transform:uppercase;'>";
+//   var tagSuffix = "</span>";
+//   var textPrefix = "Equivalent to: ";
+//   var textSuffix = " \n";
+//   var spacer = " ";
+
+
+//   for (var i=0; i < lookups.length; i++) {
+//     var unit = lookups[i];
+    
+//     var toBeConvertedTo = getUnitLookup(getPreferenceFor(unit.measures));
+//     var unitKnownBy = "("+unit.known_by.join('|')+")";
+   
+//     var searchTerm = new RegExp("\\b[1-9](?:\\d{0,2})(?:,\\d{3})*(?:\\.\\d*[1-9])?\\s?"+unitKnownBy+"\\b|\\b0?\\.\\d*[1-9]\\s?"+unitKnownBy+"\\b|\\b0\\s?"+unitKnownBy+"\\b", "gi");
+
+//     var replaced = body.replace(searchTerm, 
+//       function(match, group1, group2, group3, offset, original) {
+//         var valueToBeConverted = match.replace(/[^0-9\.]+/g,'');
+//         var conversion = convert(valueToBeConverted, unit, toBeConvertedTo);
+
+//         //Todo: check index doesn't go < 0
+//         var matched = body.substring((offset - textPrefix.length), (offset + match.length + textSuffix.length));
+
+//         if(matched.substring(0, textPrefix.length) == textPrefix){
+//           return match;
+//         }
+
+//         var output = textPrefix + conversion + spacer + toBeConvertedTo.plural_unit + textSuffix;
+
+//         debugger
+//         return tagPrefix+output+tagStyle+match+tagSuffix;
+//       }
+//     );
+//     body = replaced;     
+//   }
+
+//   $("body").html(body);
+
+// };
+
+
+var applyConversions = function(){
   var tagPrefix = "<span title='";
   var tagStyle = "' style='text-transform:uppercase;'>";
   var tagSuffix = "</span>";
@@ -2843,38 +2893,49 @@ var identifyAndUpdatePageUnits = function(){
   var textSuffix = " \n";
   var spacer = " ";
 
-
   for (var i=0; i < lookups.length; i++) {
     var unit = lookups[i];
     
     var toBeConvertedTo = getUnitLookup(getPreferenceFor(unit.measures));
     var unitKnownBy = "("+unit.known_by.join('|')+")";
    
-    var searchTerm = new RegExp("\\b[1-9](?:\\d{0,2})(?:,\\d{3})*(?:\\.\\d*[1-9])?\\s?"+unitKnownBy+"\\b|0?\\.\\d*[1-9]\\s?"+unitKnownBy+"\\b|0\\s?"+unitKnownBy+"\\b", "gi");
+    var searchTerm = new RegExp("\\b[1-9](?:\\d{0,2})(?:,\\d{3})*(?:\\.\\d*[1-9])?\\s?"+unitKnownBy+"\\b|\\b0?\\.\\d*[1-9]\\s?"+unitKnownBy+"\\b|\\b0\\s?"+unitKnownBy+"\\b", "gi");
 
-    var replaced = body.replace(searchTerm, 
+    $("body *").replaceText(searchTerm, 
       function(match, group1, group2, group3, offset, original) {
         var valueToBeConverted = match.replace(/[^0-9\.]+/g,'');
         var conversion = convert(valueToBeConverted, unit, toBeConvertedTo);
 
-        
+        //Todo: check index doesn't go < 0
         var matched = body.substring((offset - textPrefix.length), (offset + match.length + textSuffix.length));
 
         if(matched.substring(0, textPrefix.length) == textPrefix){
           return match;
         }
-        
 
         var output = textPrefix + conversion + spacer + toBeConvertedTo.plural_unit + textSuffix;
+        
         return tagPrefix+output+tagStyle+match+tagSuffix;
       }
     );
-    body = replaced;     
   }
-
-  $("body").html(body);
-
 };
+
+// JQuery Example for cribbing later
+// function firebrand($el) {
+//    $el.contents().each(function () {
+
+//        if (this.nodeType == 3) { // Text only
+//            $(this).replaceWith($(this).text()
+//                .replace(/(firebrand)/gi, '<span class="firebrand">$1</span>'));
+//        } else { // Child element
+//            firebrand($(this));
+//        }
+
+//    });
+// }
+
+// firebrand($("body"));
 
 loadPreferences();
 
