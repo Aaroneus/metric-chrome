@@ -2906,14 +2906,7 @@ var applyConversions = function(){
         var valueToBeConverted = match.replace(/[^0-9\.]+/g,'');
         var conversion = convert(valueToBeConverted, unit, toBeConvertedTo);
 
-        var output = textPrefix + conversion + spacer + toBeConvertedTo.plural_unit + textSuffix;
-        // TODO: Find a way to get a handle on the match from this anonymous function!!!
-
-        // if ($(node).parent().attr("class") == "metric_conversion"){
-        //   // $(node).parent().attr("title").append(output);
-        //   alert('Node already converted');
-        //   return; 
-        // }
+        var output = textPrefix + conversion + spacer + toBeConvertedTo.plural_unit+ spacer + "("+toBeConvertedTo.measures.toUpperCase() +")"+ textSuffix;
 
         return tagPrefix+output+tagStyle+match+tagSuffix;
       }
