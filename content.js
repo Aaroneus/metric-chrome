@@ -86,7 +86,7 @@ var lookups = [{"id":"3","unit":"Celsius","plural_unit":"Celsius","symbols":"ºC
   {"lookup_id":"29","convert_to":"Microns","conversion_factor":"1.0000000","conversion_factor_exponent":"6","conversion_factor_offset":"0.00","conversion_factor_premult":"1"},
   {"lookup_id":"113","convert_to":"Leagues","conversion_factor":"1.0000000","conversion_factor_exponent":"0","conversion_factor_offset":"0.00","conversion_factor_premult":"1"},
   {"lookup_id":"114","convert_to":"Nautical Miles","conversion_factor":"1.0000000","conversion_factor_exponent":"0","conversion_factor_offset":"0.00","conversion_factor_premult":"1"}],"class":null,"metric":null},
-{"id":"9","unit":"Kilometer","plural_unit":"Kilometers","symbols":"km","known_by":["Kilometer","Kilometers","km"],"region":"INTERNATIONAL","measures":"length","convert_to_base_factor":  {"lookup_id":"9","convert_to":"Kilometers","conversion_factor":"1.0000000","conversion_factor_exponent":"-3","conversion_factor_offset":"0.00","conversion_factor_premult":"1"},"converts_to":[
+{"id":"9","unit":"Kilometer","plural_unit":"Kilometers","symbols":"km","known_by":["Kilometer","Kilometers","km","k"],"region":"INTERNATIONAL","measures":"length","convert_to_base_factor":  {"lookup_id":"9","convert_to":"Kilometers","conversion_factor":"1.0000000","conversion_factor_exponent":"-3","conversion_factor_offset":"0.00","conversion_factor_premult":"1"},"converts_to":[
   {"lookup_id":"7","convert_to":"Parsecs","conversion_factor":"3.2407793","conversion_factor_exponent":"-17","conversion_factor_offset":"0.00","conversion_factor_premult":"1"},
   {"lookup_id":"8","convert_to":"Lightyears","conversion_factor":"1.0570008","conversion_factor_exponent":"-16","conversion_factor_offset":"0.00","conversion_factor_premult":"1"},
   {"lookup_id":"9","convert_to":"Kilometers","conversion_factor":"1.0000000","conversion_factor_exponent":"-3","conversion_factor_offset":"0.00","conversion_factor_premult":"1"},
@@ -2757,14 +2757,14 @@ var loadPreferences = function(){
   chrome.storage.sync.get(accName, function(data){
     var val = data[accName];
     if(!val){
-      prefs = loadDefaults();      
+      prefs = loadDefaults();
     } else {
-      prefs = val;    	
+      prefs = val;
     }
     // identifyAndUpdatePageUnits();
     applyConversions();
   });
-}
+};
 
 var unitMeasures = function(unitName){
 	var lookup = getUnitLookup(unitName);
@@ -2886,7 +2886,7 @@ var convert = function(valueToBeConverted, unit, toBeConvertedTo){
 
 
 var applyConversions = function(){
-  var tagPrefix = "<span title='";
+  var tagPrefix = "<span class='metric_conversion' title='";
   var tagStyle = "' style='text-transform:uppercase;'>";
   var tagSuffix = "</span>";
   var textPrefix = "Equivalent to: ";
@@ -2902,19 +2902,19 @@ var applyConversions = function(){
     var searchTerm = new RegExp("\\b[1-9](?:\\d{0,2})(?:,\\d{3})*(?:\\.\\d*[1-9])?\\s?"+unitKnownBy+"\\b|\\b0?\\.\\d*[1-9]\\s?"+unitKnownBy+"\\b|\\b0\\s?"+unitKnownBy+"\\b", "gi");
 
     $("body *").replaceText(searchTerm, 
-      function(match, group1, group2, group3, offset, original) {
+      function(match, group1, group2, group3, offset, original) {        
         var valueToBeConverted = match.replace(/[^0-9\.]+/g,'');
         var conversion = convert(valueToBeConverted, unit, toBeConvertedTo);
 
-        //Todo: check index doesn't go < 0
-        var matched = body.substring((offset - textPrefix.length), (offset + match.length + textSuffix.length));
-
-        if(matched.substring(0, textPrefix.length) == textPrefix){
-          return match;
-        }
-
         var output = textPrefix + conversion + spacer + toBeConvertedTo.plural_unit + textSuffix;
-        
+        // TODO: Find a way to get a handle on the match from this anonymous function!!!
+
+        // if ($(node).parent().attr("class") == "metric_conversion"){
+        //   // $(node).parent().attr("title").append(output);
+        //   alert('Node already converted');
+        //   return; 
+        // }
+
         return tagPrefix+output+tagStyle+match+tagSuffix;
       }
     );
