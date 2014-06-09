@@ -2810,32 +2810,29 @@ var loadDefaults = function(){
 
 var convert = function(valueToBeConverted, unit, toBeConvertedTo){
 
-	//normalise to SI unit
-
-	//Take normalised value and convert to new lookup value
-	// Formula:
-	//Subtract offset 
-	//multiply by factor
-  
   var toBase = unit.convert_to_base_factor;
-  var toPremult = parseFloat(toBase.conversion_factor_premult);
+  var toPremult = parseFloat(toBase.conversion_factor_premult) == 0 ? 1 : parseFloat(toBase.conversion_factor_premult);
   var toConversionFactorOffset = parseFloat(toBase.conversion_factor_offset);
   var toConversionFactor = parseFloat(toBase.conversion_factor);
   var toConversionFactorExponent = parseFloat(toBase.conversion_factor_exponent);
 
   var fromBase = toBeConvertedTo.convert_to_base_factor;
-  var fromPremult = parseFloat(fromBase.conversion_factor_premult);
+  var fromPremult = parseFloat(fromBase.conversion_factor_premult) == 0 ? 1 : parseFloat(fromBase.conversion_factor_premult);
   var fromConversionFactorOffset = parseFloat(fromBase.conversion_factor_offset);
   var fromConversionFactor = parseFloat(fromBase.conversion_factor);
   var fromConversionFactorExponent = parseFloat(fromBase.conversion_factor_exponent);
 
   //baseValue is number of units as a base unit
   var baseValue = (
-    toPremult * (valueToBeConverted - toConversionFactorOffset)) * (toConversionFactor * Math.pow(10,(toConversionFactorExponent * -1))
+    (valueToBeConverted - toConversionFactorOffset)) * (toConversionFactor * Math.pow(10,(toConversionFactorExponent * -1)) * toPremult
   );
 
+  //Zero Checking for the algorithm to ensure no / 0 errors.
+  var fromConversionDenominator = (fromConversionFactor / Math.pow(10,fromConversionFactorExponent)) == 0 ? 1 : (fromConversionFactor / Math.pow(10,fromConversionFactorExponent))
+  
+  //convertedValue is the number of units converted from base units
   var convertedValue = (
-    (baseValue + fromConversionFactorOffset) / (fromConversionFactor / Math.pow(10,(fromConversionFactorExponent)))/fromPremult
+    (baseValue + fromConversionFactorOffset) / fromConversionDenominator / fromPremult
   );
 	return convertedValue;
 }
@@ -2850,10 +2847,6 @@ var applyConversions = function(){
 
   for (var i=0; i < lookups.length; i++) {
     var unit = lookups[i];
-
-    if(unit.unit == 'Mile'){
-      debugger
-    }
     
     var toBeConvertedTo = getUnitLookup(getPreferenceFor(unit.measures));
     var unitKnownBy = "("+unit.known_by.join('|')+")";
