@@ -2829,30 +2829,16 @@ var convert = function(valueToBeConverted, unit, toBeConvertedTo){
   var fromConversionFactor = parseFloat(fromBase.conversion_factor);
   var fromConversionFactorExponent = parseFloat(fromBase.conversion_factor_exponent);
 
-  // var baseValue = ( toPremult * (valueToBeConverted - toConversionFactorOffset)) * (toConversionFactor * Math.pow(10,toConversionFactorExponent));
-  // var convertedValue = ((baseValue + fromConversionFactorOffset) / fromPremult) / power(fromConversionFactor, (fromConversionFactorExponent * -1));
-
   //baseValue is number of units as a base unit
-  var baseValue = (toPremult * (valueToBeConverted - toConversionFactorOffset)) * (toConversionFactor * Math.pow(10,(toConversionFactorExponent * -1)));
-  
-  // var convertedValue = (baseValue/ (fromConversionFactor * Math.pow(10,(fromConversionFactorExponent)) + fromConversionFactorOffset) / fromPremult);
-  var convertedValue = baseValue * (fromConversionFactor * Math.pow(10,(fromConversionFactorExponent)));
+  var baseValue = (
+    toPremult * (valueToBeConverted - toConversionFactorOffset)) * (toConversionFactor * Math.pow(10,(toConversionFactorExponent * -1))
+  );
 
+  var convertedValue = (
+    (baseValue + fromConversionFactorOffset) / (fromConversionFactor / Math.pow(10,(fromConversionFactorExponent)))/fromPremult
+  );
 	return convertedValue;
-};
-
-var toUnicode = function(theString) {
-  var unicodeString = '';
-  for (var i=0; i < theString.length; i++) {
-    var theUnicode = theString.charCodeAt(i).toString(16).toUpperCase();
-    while (theUnicode.length < 4) {
-      theUnicode = '0' + theUnicode;
-    }
-    theUnicode = '\\u' + theUnicode;
-    unicodeString += theUnicode;
-  }
-  return unicodeString;
-};
+}
 
 var applyConversions = function(){
   var tagPrefix = "<span class='metric_conversion' title='";
@@ -2865,17 +2851,18 @@ var applyConversions = function(){
   for (var i=0; i < lookups.length; i++) {
     var unit = lookups[i];
 
-    if(unit.unit == 'Fahrenheit'){
+    if(unit.unit == 'Mile'){
       debugger
     }
     
     var toBeConvertedTo = getUnitLookup(getPreferenceFor(unit.measures));
-    var unitKnownBy = "("+toUnicode(unit.known_by.join('|'))+")";
+    var unitKnownBy = "("+unit.known_by.join('|')+")";
    
-    var searchTerm = new RegExp("\\s[1-9](?:\\d{0,2})(?:,\\d{3})*(?:\\.\\d*[1-9])?\\s?"+unitKnownBy+"\\s|\\s0?\\.\\d*[1-9]\\s?"+unitKnownBy+"\\s|\\s0\\s?"+unitKnownBy+"\\s", "gi");
+    var searchTerm = new RegExp("\\b[1-9](?:\\d{0,2})(?:,\\d{3})*(?:\\.\\d*[1-9])?\\s?"+unitKnownBy+"\\b|\\b0?\\.\\d*[1-9]\\s?"+unitKnownBy+"\\b|\\b0\\s?"+unitKnownBy+"\\b", "gi");
 
     $("body *").replaceText(searchTerm, 
-      function(match, group1, group2, group3, offset, original) {        
+      function(match, group1, group2, group3, offset, original) {
+
         var valueToBeConverted = match.replace(/[^0-9\.]+/g,'');
         var conversion = convert(valueToBeConverted, unit, toBeConvertedTo);
 

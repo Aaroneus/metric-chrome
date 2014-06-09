@@ -17,7 +17,6 @@
 						e = g.replace(b, a);
 						if (e !== g) {
 							if ( $( this ).hasClass( "metric_conversion" ) ) {
-								debugger
 								this.title = this.title + $.parseHTML( e )[0].title;
 								e = g;								
 	    					}
