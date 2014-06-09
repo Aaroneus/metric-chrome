@@ -2859,7 +2859,14 @@ var applyConversions = function(){
         var valueToBeConverted = match.replace(/[^0-9\.]+/g,'');
         var conversion = convert(valueToBeConverted, unit, toBeConvertedTo);
 
-        var output = textPrefix + conversion + spacer + toBeConvertedTo.plural_unit+ spacer + "("+toBeConvertedTo.measures.toUpperCase() +")"+ textSuffix;
+        var output = textPrefix 
+                    + conversion 
+                    + spacer 
+                    + toBeConvertedTo.plural_unit
+                    + spacer 
+                    + toBeConvertedTo.region != 'INTERNATIONAL' ? " - "+ toBeConvertedTo.region : ""
+                    + "("+ toBeConvertedTo.measures.toUpperCase()+ ")"
+                    + textSuffix;
 
         return tagPrefix+output+tagStyle+match+tagSuffix;
       }
