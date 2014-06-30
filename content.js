@@ -2822,6 +2822,9 @@ var convert = function(valueToBeConverted, unit, toBeConvertedTo){
   var fromConversionFactor = parseFloat(fromBase.conversion_factor);
   var fromConversionFactorExponent = parseFloat(fromBase.conversion_factor_exponent);
 
+  if(unit.unit == 'Kilometer'){
+    // debugger
+  }
   //baseValue is number of units as a base unit
   var baseValue = (
     (valueToBeConverted - toConversionFactorOffset)) * (toConversionFactor * Math.pow(10,(toConversionFactorExponent * -1)) * toPremult
@@ -2841,7 +2844,7 @@ var applyConversions = function(){
   var tagPrefix = "<span class='metric_conversion' title='";
   var tagStyle = "' style='text-transform:uppercase;'>";
   var tagSuffix = "</span>";
-  var textPrefix = "Equivalent to: ";
+  var textPrefix = "";
   var textSuffix = " \n";
   var spacer = " ";
 
@@ -2851,7 +2854,11 @@ var applyConversions = function(){
     var toBeConvertedTo = getUnitLookup(getPreferenceFor(unit.measures));
     var unitKnownBy = "("+unit.known_by.join('|')+")";
    
-    var searchTerm = new RegExp("\\b[1-9](?:\\d{0,2})(?:,\\d{3})*(?:\\.\\d*[1-9])?\\s?"+unitKnownBy+"\\b|\\b0?\\.\\d*[1-9]\\s?"+unitKnownBy+"\\b|\\b0\\s?"+unitKnownBy+"\\b", "gi");
+    // var searchTerm = new RegExp("\\b[1-9](?:\\d{0,2})(?:,\\d{3})*(?:\\.\\d*[1-9])?\\s?"+unitKnownBy+"\\b|\\b0?\\.\\d*[1-9]\\s?"+unitKnownBy+"\\b|\\b0\\s?"+unitKnownBy+"\\b", "gi");
+    var searchTerm = new RegExp("(\\s|\\n|^)[1-9](?:\\d{0,2})(?:,\\d{3})*(?:\\.\\d*[1-9])?\\s?"+unitKnownBy+"\\b|(\\s|\\n|^)0?\\.\\d*[1-9]\\s?"+unitKnownBy+"\\b|(\\s|\\n|^)0\\s?"+unitKnownBy+"\\b", "gi");
+    var unitRegion = unit.region != 'INTERNATIONAL' ? unit.region.toUpperCase() + " " : "";
+    var region = toBeConvertedTo.region != 'INTERNATIONAL' ? " in " + toBeConvertedTo.region + spacer + toBeConvertedTo.plural_unit + spacer : "";
+
 
     $("body *").replaceText(searchTerm, 
       function(match, group1, group2, group3, offset, original) {
@@ -2862,10 +2869,11 @@ var applyConversions = function(){
         var output = textPrefix 
                     + conversion 
                     + spacer 
+                    + unitRegion                    
                     + toBeConvertedTo.plural_unit
                     + spacer 
-                    + toBeConvertedTo.region != 'INTERNATIONAL' ? " - "+ toBeConvertedTo.region : ""
-                    + "("+ toBeConvertedTo.measures.toUpperCase()+ ")"
+                    + region
+                    + "(" + toBeConvertedTo.measures.toUpperCase() + ")"
                     + textSuffix;
 
         return tagPrefix+output+tagStyle+match+tagSuffix;
@@ -2877,7 +2885,7 @@ var applyConversions = function(){
 loadPreferences();
 
 
-
+e
 
 
 
